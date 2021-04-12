@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using TaskManager.API.Models.InputModels;
 using TaskManager.API.Models.OutputModels;
 using TaskManager.Business;
-using TaskManager.DataAccess.Models;
+using TaskManager.Core.Models;
 
 namespace TaskManager.API.Controllers
 {
@@ -83,6 +84,30 @@ namespace TaskManager.API.Controllers
                 return NotFound();
             }
             var outputModel = _mapper.Map<TaskOutputModel>(task);
+            return Ok(outputModel);
+        }
+
+        [ProducesResponseType(typeof(List<WorkerOutputModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpGet("{taskId}/workers")]
+        public ActionResult<List<WorkerOutputModel>> GetWorkersByTaskId(int taskId)
+        {
+            var task = _taskService.GetTaskById(taskId);
+            if (task == null)
+            {
+                return NotFound();
+            }
+            var outputModel = _mapper.Map<List<WorkerOutputModel>>(task.Workers);
+            return Ok(outputModel);
+        }
+
+        [ProducesResponseType(typeof(List<TaskOutputModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpPost("search")]
+        public ActionResult<List<TaskOutputModel>> SearchTasks([FromBody] SearchTaskInputModel inputModel)
+        {
+            var tasks = _taskService.SearchTasks(_mapper.Map<SearchModel>(inputModel));
+            var outputModel = _mapper.Map<List<TaskOutputModel>>(tasks);
             return Ok(outputModel);
         }
     }

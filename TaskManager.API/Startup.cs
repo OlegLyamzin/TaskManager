@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System.Linq;
 using TaskManager.Business;
 using TaskManager.Core;
 using TaskManager.DataAccess;
@@ -38,7 +37,7 @@ namespace TaskManager.API
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(swagger =>
             {
-                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "powerful-crm" });
+                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "Task Manager" });
             });
             services.AddSwaggerGenNewtonsoftSupport();
         }

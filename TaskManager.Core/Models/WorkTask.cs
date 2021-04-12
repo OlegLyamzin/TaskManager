@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TaskManager.DataAccess.Models
+namespace TaskManager.Core.Models
 {
     public class WorkTask
     {
@@ -11,8 +11,10 @@ namespace TaskManager.DataAccess.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Priority { get; set; }
-        public int ClientDepartamentId { get; set; }
-        public int ExecutorDepartamentId { get; set; }
+        public int? ClientDepartamentId { get; set; }
+        public int? ExecutorDepartamentId { get; set; }
+        public virtual Departament ClientDepartament { get; set; }
+        public virtual Departament ExecutorDepartament { get; set; }
         public virtual List<Worker> Workers { get; set; }  
         public WorkTask()
         {

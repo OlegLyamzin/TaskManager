@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TaskManager.API.Models.InputModels;
 using TaskManager.API.Models.OutputModels;
 using TaskManager.Business;
-using TaskManager.DataAccess.Models;
+using TaskManager.Core.Models;
 
 namespace TaskManager.API.Controllers
 {

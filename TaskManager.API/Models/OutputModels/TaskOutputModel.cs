@@ -12,7 +12,7 @@ namespace TaskManager.API.Models.OutputModels
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Priority { get; set; }
-        public int ClientDepartamentId { get; set; }
-        public int ExecutorDepartamentId { get; set; }
+        public DepartamentOutputModel ClientDepartament { get; set; }
+        public DepartamentOutputModel ExecutorDepartament { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskManager.API.Models.InputModels;
 using TaskManager.API.Models.OutputModels;
-using TaskManager.DataAccess.Models;
+using TaskManager.Core.Models;
 
 namespace TaskManager.API
 {
@@ -18,6 +18,10 @@ namespace TaskManager.API
 
             CreateMap<TaskInputModel, WorkTask>();
             CreateMap<WorkTask, TaskOutputModel>();
+
+            CreateMap<SearchTaskInputModel, SearchModel>();
+
+            CreateMap<Departament, DepartamentOutputModel>();
         }
     }
 }

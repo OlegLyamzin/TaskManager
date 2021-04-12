@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TaskManager.Core;
-using TaskManager.DataAccess.Models;
+using TaskManager.Core.Models;
 
 namespace TaskManager.DataAccess
 {
@@ -62,6 +62,8 @@ namespace TaskManager.DataAccess
         public int AddTask(WorkTask task)
         {
             _db.Tasks.Add(task);
+            task.ClientDepartament = _db.Departaments.SingleOrDefault(d => d.Id == task.ClientDepartamentId);
+            task.ExecutorDepartament = _db.Departaments.SingleOrDefault(d => d.Id == task.ExecutorDepartamentId);
             _db.SaveChanges();
             return task.Id;
         }
@@ -87,6 +89,10 @@ namespace TaskManager.DataAccess
             var taskDb = _db.Tasks.SingleOrDefault(t => t.Id == id);
             _db.Tasks.Remove(taskDb);
             _db.SaveChanges();
+        }
+        public List<WorkTask> GetTasks()
+        {
+            return _db.Tasks.ToList();
         }
     }
 }

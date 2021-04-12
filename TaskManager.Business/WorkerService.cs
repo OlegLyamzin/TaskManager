@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TaskManager.Core.Models;
 using TaskManager.DataAccess;
-using TaskManager.DataAccess.Models;
 
 namespace TaskManager.Business
 {

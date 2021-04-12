@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TaskManager.DataAccess.Models
+namespace TaskManager.Core.Models
 {
     public class Worker
     {
